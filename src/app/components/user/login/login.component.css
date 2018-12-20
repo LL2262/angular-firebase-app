@@ -1,0 +1,15 @@
+.form-control.login-user {
+  border: 0 solid #fff !important;
+}
+
+.center-login{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    height: 300px;
+    margin-top: -150px;
+    border: 1px solid #cccc;
+    padding: 30px;
+}
