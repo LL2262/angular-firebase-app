@@ -1,36 +1,43 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-  <a class="navbar-brand" routerLink="/">{{app_name}}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="mainNavbar">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngIf="isLogged">
-        <a class="nav-link" routerLink="/offers">Offers
-        </a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item" *ngIf="!isLogged">
-        <a class="nav-link" routerLink="/user/register">Register
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="isLogged">
-        <a class="nav-link" routerLink="/user/profile">Profile</a>
-      </li>
-      <li class="nav-item" *ngIf="isLogged">
-        <a class="nav-link" routerLink="/admin/list-books">List Books</a>
-      </li>
-      <li class="nav-item" *ngIf="!isLogged">
-        <a class="nav-link" routerLink="/user/login">Login
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="isLogged">
-        <a href="#" class="nav-link" (click)="onLogout()">Logout
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<div class="content">
+  <nav class="navbar navbar-inverse bg-primary">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" [routerLink]="['/']">{{titulo}}</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li *ngIf="isLogin">
+            <a [routerLink]="['/offers']">
+              <i class="glyphicon glyphicon-usd"></i> Offers</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="!isLogin">
+            <a [routerLink]="['/user/register']">
+              <span class="glyphicon glyphicon-user"></span> Register</a>
+          </li>
+          <li *ngIf="!isLogin">
+            <a [routerLink]="['/user/login']">
+              <span class="glyphicon glyphicon-log-in"></span> Login</a>
+          </li>
+          <li *ngIf="isLogin">
+            <a [routerLink]="['/user/profile']" >
+              <span class="glyphicon glyphicon-camera"></span> Profile</a>
+          </li>
+          <li *ngIf="isLogin">
+            <a [routerLink]="['/admin/list-books']">
+              <span class="glyphicon glyphicon-book"></span> List Books</a>
+          </li>
+          <li *ngIf="isLogin">
+            <a href="#" (click)="onClickLogout()">
+              <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

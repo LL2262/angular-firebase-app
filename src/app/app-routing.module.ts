@@ -9,7 +9,7 @@ import { RegisterComponent } from './components/user/register/register.component
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { Page404Component } from './components/page404/page404.component';
 
-import { AuthGuard } from './guards/auth.guard';
+//import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'admin/list-books', component: ListBooksComponent}, // TODO: only users auth
   { path: 'user/login', component: LoginComponent },
   { path: 'user/register', component: RegisterComponent },
-  { path: 'user/profile', component: ProfileComponent },
-  { path: '**', component: Page404Component }  // TODO: only users auth
+  { path: 'user/profile', component: ProfileComponent }, // TODO: only users auth
+  { path: '**', component: Page404Component }  
 ];
 
 @NgModule({

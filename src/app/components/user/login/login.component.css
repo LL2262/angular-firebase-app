@@ -1,5 +1,5 @@
 .form-control.login-user {
-  border: 0 solid #fff !important;
+  border: 0px solid #fff !important;
 }
 
 .center-login{
@@ -8,8 +8,18 @@
     left: 50%;
     width: 400px;
     margin-left: -200px;
-    height: 300px;
+    height: auto;
     margin-top: -150px;
     border: 1px solid #cccc;
     padding: 30px;
+}
+
+.btn-facebook{
+  background: #3b5998;
+  color: #fff;
+}
+
+.btn-google{
+  background: #dd4b39;
+  color: #fff;
 }

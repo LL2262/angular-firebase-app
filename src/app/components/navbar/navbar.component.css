@@ -1,0 +1,28 @@
+.navbar-inverse .navbar-nav>li>a {
+    color: lightgray;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color:white !important
+}
+
+.navbar-inverse .navbar-brand {
+    color:#cccc;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    color: white !important
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover{
+    transition: 300ms ease;
+}
+
+.navbar-inverse {
+    background-color: #337ab7;
+    border-color: transparent;
+}

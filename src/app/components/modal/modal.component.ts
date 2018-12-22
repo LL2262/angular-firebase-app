@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
-import { BookInterface } from '../../models/book-interface';
+import { Book } from '../../models/book';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 
@@ -11,21 +11,11 @@ import { Location } from '@angular/common';
 })
 export class ModalComponent implements OnInit {
 
-  constructor(
-    private dataApiService: DataApiService,
-    private location: Location
-  ) { }
-  ngOnInit() {
-  }
+  constructor() { 
 
-  onSaveBook(bookForm: NgForm): void {
-    if (bookForm.value.bookId == null) {
-      // NEW
-      this.dataApiService.saveBook(bookForm.value).subscribe(book => location.reload());
-    } else {
-      // update
-      this.dataApiService.updateBook(bookForm.value).subscribe(book => location.reload());
-    }
+  }
+  
+  ngOnInit() {
   }
 
 }

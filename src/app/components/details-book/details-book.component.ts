@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BookInterface } from '../..//models/book-interface';
+import { Book } from '../../models/book';
 
 @Component({
   selector: 'app-details-book',
@@ -9,23 +9,11 @@ import { BookInterface } from '../..//models/book-interface';
   styleUrls: ['./details-book.component.css']
 })
 export class DetailsBookComponent implements OnInit {
-  constructor(private dataApi: DataApiService, private route: ActivatedRoute) { }
-  private book: BookInterface = {
-    titulo: '',
-    idioma: '',
-    descripcion: '',
-    portada: '',
-    precio: '',
-    link_amazon: '',
-    autor: '',
-    oferta: ''
-  };
+
+  constructor() { }
+
   ngOnInit() {
-    const book_id = this.route.snapshot.params['id'];
-    this.getDetails(book_id);
+
   }
 
-  getDetails(id: string) {
-    this.dataApi.getBookById(id).subscribe(book => (this.book = book));
-  }
 }

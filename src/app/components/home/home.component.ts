@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataApiService } from "../../services/data-api.service";
-import { BookInterface } from "../../models/book-interface";
+import { Book } from "../../models/book";
 
 @Component({
   selector: "app-home",
@@ -8,15 +8,14 @@ import { BookInterface } from "../../models/book-interface";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  constructor(private dataApi: DataApiService) {}
-  private books: BookInterface;
+
+  constructor() {}
+  
   ngOnInit() {
-    this.getListBooks();
+    
   }
 
   getListBooks() {
-    this.dataApi
-      .getNotOffers()
-      .subscribe((books: BookInterface) => (this.books = books));
+    
   }
 }
