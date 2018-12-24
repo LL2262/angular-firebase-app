@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   public titulo: String;
   public isLogin: boolean;
 
-  constructor() {
+  constructor(private _authService: AuthService, private _router: Router) {
 
     this.titulo = 'BookStore';
     this.isLogin = false;
@@ -20,7 +20,21 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.getCurrentUser();
+  }
 
+  getCurrentUser(){
+    this._authService.isAuth().subscribe(auth =>{
+      if(auth){
+        this.isLogin = true;
+      }else{
+        this.isLogin = false;
+      }
+    })
+  }
+
+  onLogout(){
+    this._authService.logoutUser();
   }
 
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/user';
+import { NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -12,28 +11,67 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private afAuth: AngularFireAuth, private _router: Router) { }
+  public usuario: User;
+
+  constructor(private _authService: AuthService, private ngZone: NgZone, private _router: Router) {
+
+    this.usuario = {};
+
+  }
 
   ngOnInit() { 
+  }
 
+  onLoginEmail(){
+    this._authService.loginEmailUser(this.usuario.email, this.usuario.password).then(
+      response => {
+        if(response.user){
+          this.ngZone.run(() => this._router.navigate(['/admin/list-books']));
+        }
+      },
+      error => {
+        if(error.code == "auth/invalid-email"){
+          console.log("Formato de email incorrecto");
+        }
+        if(error.code == "auth/user-not-found"){
+          console.log("No existe un usuario con ese email");
+        }
+        if(error.code == "auth/wrong-password"){
+          console.log("Contraseña incorretca o ya existe un usuario con ese email");
+        }
+      }
+    );
   }
 
   onLoginFacebook(){
-    this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider);
-    this._router.navigate(['admin/list-books']);
+    this._authService.loginFacebookUser().then(
+      response => {
+        if(response.user){
+          this.ngZone.run(() => this._router.navigate(['/admin/list-books']));
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   onLoginGoogle(){
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider).then(user => {
-      if(user){
-        this._router.navigate(['admin/list-books']);
+    this._authService.loginGooglelUser().then(
+      response => {
+        if(response.user){
+          this.ngZone.run(() => this._router.navigate(['/admin/list-books']));
+        }
+      },
+      error => {
+        console.log(error);
       }
-    });
+    );
     
   }
 
   onLogout(){
-    this.afAuth.auth.signOut();
+    this._authService.logoutUser();
   }
 
 }

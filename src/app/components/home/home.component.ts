@@ -9,13 +9,19 @@ import { Book } from "../../models/book";
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {}
+  public books = [];
+  public book: Book;
+
+  constructor(private _dataApiService: DataApiService) {}
   
   ngOnInit() {
-    
+    this.getListBooks();
   }
 
   getListBooks() {
-    
+    this._dataApiService.getAllBooks().subscribe(books =>{
+      console.log('books:', books);
+      this.books = books;
+    });
   }
 }

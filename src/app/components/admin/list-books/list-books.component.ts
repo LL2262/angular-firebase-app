@@ -10,12 +10,28 @@ import { NgForm } from '@angular/forms';
 })
 export class ListBooksComponent implements OnInit {
 
-  constructor() {
+  public books = [];
+  public book: Book;
 
-   }
+  constructor(private _dataApiService: DataApiService) {
+
+    this.book = {};
+
+  }
   
   ngOnInit() {
+    this.getListBooks();
+  }
 
+  getListBooks() {
+    this._dataApiService.getAllBooks().subscribe(books =>{
+      this.books = books;
+      console.log('books:', books);
+    });
+  }
+
+  onDeleteBook(){
+    this._dataApiService.deleteBook(this.book)
   }
 
 }

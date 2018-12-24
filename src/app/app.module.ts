@@ -15,10 +15,11 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { Page404Component } from './components/page404/page404.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 // Services
 import { DataApiService } from './services/data-api.service';
-import { ModalComponent } from './components/modal/modal.component';
+import { AuthService } from './services/auth.service';
 
 // Externals
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -31,6 +32,9 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @NgModule({
   declarations: [
@@ -55,9 +59,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
     FormsModule, 
     NgxSpinnerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
-  providers: [AngularFireAuth, DataApiService],
+  providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -10,10 +10,24 @@ import { Book } from '../../models/book';
 })
 export class DetailsBookComponent implements OnInit {
 
-  constructor() { }
+  public book: Book;
+
+  constructor(private _dataApiService: DataApiService, private _activateRoute: ActivatedRoute) {
+
+    this.book = {};
+    
+   }
 
   ngOnInit() {
+    this.getDetailsBook();
+  }
 
+  getDetailsBook(){
+    const id = this._activateRoute.snapshot.params['id'];
+    this._dataApiService.getOneBook(id).subscribe(book =>{
+      this.book = book;
+      console.log(this.book)
+    });
   }
 
 }

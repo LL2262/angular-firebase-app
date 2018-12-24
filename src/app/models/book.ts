@@ -1,6 +1,6 @@
 export class Book {
 
-  constructor(
+    constructor(
     public titulo?: string,
     public idioma?: string,
     public descripcion?: string,
@@ -9,7 +9,6 @@ export class Book {
     public link_amazon?: string,
     public autor?: string,
     public oferta?: string,
-    public id?: string,
-    public index?: string
-  ){}
+    public id?: string,)
+    {}
 }

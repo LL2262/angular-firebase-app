@@ -12,5 +12,5 @@ export const environment = {
     projectId: "bookstore-ll-2018",
     storageBucket: "bookstore-ll-2018.appspot.com",
     messagingSenderId: "538804798800"
-  }
+  },
 };

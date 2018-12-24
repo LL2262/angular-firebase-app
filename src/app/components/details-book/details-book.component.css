@@ -1,3 +1,43 @@
-p.card-text {
-  text-align: justify;
-}
+#books {
+    border-radius: 0.25rem;
+    background: #e4e4e4 !important;
+  }
+  
+  section {
+    padding: 20px 0;
+  }
+  
+  #books .card {
+    border-radius: 5px;
+    background: #fff;
+    padding: 10px;
+  }
+  
+  p.card-text,
+  h4.card-title {
+    min-height: 40px !important;
+  }
+  
+  .card-title {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .img-book {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+  
+  div.container-precio-idioma{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
