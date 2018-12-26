@@ -1,24 +1,116 @@
-<div class="row col-sm-12 col-md-8 col-md-offset-2">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Idioma</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Oferta</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">11</th>
-                    <td>Titulo</td>
-                    <td>Autor</td>
-                    <td>Idioma</td>
-                    <td>Precio</td>
-                    <td>Oferta</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-md-offset-3">
+        <div class="form-group">
+            <button class="btn btn-success" data-toggle="modal" data-target="#modalNewBook">New Book</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titulo</th>
+                        <th>Autor</th>
+                        <th>Idioma</th>
+                        <th>Precio</th>
+                        <th>Oferta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books, index as i">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{book.titulo}}</td>
+                        <td>{{book.autor}}</td>
+                        <td>{{book.idioma}}</td>
+                        <td>{{book.precio}}</td>
+                        <td>{{book.oferta}}</td>
+                        <td>
+                            <button class="btn btn-primary">update</button> &nbsp;
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div id="modalNewBook" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center"><strong>Add a New Bok</strong></h4>
+            </div>
+            <div class="modal-body">
+                <form #formBook="ngForm" (ngSubmit)="onSaveBook()">
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Titulo</label>
+                            <input type="text" id="titulo" name="titulo" [(ngModel)]="book.titulo" class="form-control"
+                                placeholder="Titulo">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="idioma">Idioma</label>
+                            <select name="idioma" id="idioma" [(ngModel)]="book.idioma" class="form-control">
+                                <option value="Inglés">Inglés</option>
+                                <option value="Castellano">Castellano</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Precio</label>
+                            <input type="text" id="precio" name="precio" [(ngModel)]="book.precio" class="form-control"
+                                placeholder="0,00€">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Autor</label>
+                            <input type="text" id="autor" name="autor" [(ngModel)]="book.autor" class="form-control"
+                                placeholder="Autor">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Oferta</label>
+                            <select name="oferta" id="oferta" [(ngModel)]="book.oferta" class="form-control">
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Portada</label>
+                            <input type="text" id="portada" name="portada" [(ngModel)]="book.portada" class="form-control"
+                                placeholder="Portada">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Link Amazon</label>
+                            <input type="text" id="link_amazon" name="link_amazon" [(ngModel)]="book.link_amazon" class="form-control"
+                                placeholder="Link Amazon">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Descripción</label>
+                            <textarea name="descripcion" id="descripcion" [(ngModel)]="book.descripcion" class="form-control"
+                                cols="50" rows="4" placeholder="Descripción del libro"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp;
+                            <button type="submit" class="btn btn-primary">Save Book</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

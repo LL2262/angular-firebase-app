@@ -11,11 +11,12 @@ import { NgForm } from '@angular/forms';
 export class ListBooksComponent implements OnInit {
 
   public books = [];
+  public booksAux = [];
   public book: Book;
 
   constructor(private _dataApiService: DataApiService) {
 
-    this.book = {};
+    this.book = {}
 
   }
   
@@ -25,13 +26,20 @@ export class ListBooksComponent implements OnInit {
 
   getListBooks() {
     this._dataApiService.getAllBooks().subscribe(books =>{
-      this.books = books;
-      console.log('books:', books);
+      this.booksAux = books;
+      for(var i = this.booksAux.length-1;i>=0;i--){
+        this.books.push(this.booksAux[i]);
+    }
+      console.log('books:', this.books);
     });
   }
 
+  onSaveBook(){
+    this._dataApiService.addBook(this.book);
+  }
+
   onDeleteBook(){
-    this._dataApiService.deleteBook(this.book)
+    this._dataApiService.deleteBook(this.book);
   }
 
 }

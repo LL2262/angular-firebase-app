@@ -11,13 +11,16 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  public usuario: User = {
-    email: '',
-    name: '',
-    password: '',
-  }
+  public usuario: User;
 
   constructor(private _authService: AuthService, private ngZone: NgZone, private _router: Router) {
+    
+    this.usuario = {
+      email: '',
+      name: '',
+      password: '',
+    }
+
    }
  
   ngOnInit() { 
