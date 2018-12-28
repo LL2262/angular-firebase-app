@@ -43,7 +43,7 @@
                 <h4 class="modal-title text-center"><strong>Add a New Bok</strong></h4>
             </div>
             <div class="modal-body">
-                <form #formBook="ngForm" (ngSubmit)="onSaveBook()">
+                <form #formBook="ngForm" (ngSubmit)="onSaveBook(formBook)">
 
                     <div class="row">
                         <div class="form-group col-md-12">

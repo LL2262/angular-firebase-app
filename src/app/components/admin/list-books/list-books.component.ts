@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../../services/data-api.service';
 import { Book } from '../../../models/book';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-list-books',
@@ -26,16 +25,28 @@ export class ListBooksComponent implements OnInit {
 
   getListBooks() {
     this._dataApiService.getAllBooks().subscribe(books =>{
-      this.booksAux = books;
-      for(var i = this.booksAux.length-1;i>=0;i--){
-        this.books.push(this.booksAux[i]);
-    }
-      console.log('books:', this.books);
+      books.sort(function(a, b){
+        return ((a.fecha == b.fecha) ? 0 : ((a.fecha > b.fecha) ? 1 : -1 ));
+      })
+      this.books = books;
+      console.log(this.books);
     });
   }
 
-  onSaveBook(){
+
+
+  onSaveBook(formBook){
+    var a = new Date().getDate();
+    var b = new Date().getMonth() + 1;
+    var c = new Date().getFullYear();
+    var d = new Date().getHours();
+    var e = new Date().getMinutes();
+    var f = new Date().getSeconds();
+    this.book.fecha = c+''+b+''+a+''+d+''+e+''+f;
+    console.log(this.book);
     this._dataApiService.addBook(this.book);
+
+    formBook.reset();
   }
 
   onDeleteBook(){

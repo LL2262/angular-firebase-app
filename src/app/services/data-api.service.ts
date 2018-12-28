@@ -31,6 +31,7 @@ export class DataApiService {
         });
       }));
   }
+  
 
   getOneBook(id) {
     this.bookDoc = this._afs.doc(`books/${id}`)

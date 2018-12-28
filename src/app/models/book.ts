@@ -9,6 +9,7 @@ export class Book {
     public link_amazon?: string,
     public autor?: string,
     public oferta?: string,
-    public id?: string,)
+    public id?: string,
+    public fecha?: string)
     {}
 }
